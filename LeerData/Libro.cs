@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace LeerData
 {
@@ -14,6 +15,9 @@ namespace LeerData
         public System.DateTime FechaPublicacion { get; set; }
         public byte[] ?FotoPortada { get; set; }
         public Precio ?PrecioPromocion { get; set; }  
+
+        // La propiedad ICollection tiene la capacidad de almacenar un conjunto de otro objeto
+        public ICollection<Comentario>? ComentarioLista { get; set; }
     }
 }
 
