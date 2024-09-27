@@ -18,6 +18,7 @@ namespace LeerData
 
         // La propiedad ICollection tiene la capacidad de almacenar un conjunto de otro objeto
         public ICollection<Comentario>? ComentarioLista { get; set; }
+        public ICollection<LibroAutor>? AutoresLink{get;set;}
     }
 }
 
