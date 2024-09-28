@@ -3,33 +3,25 @@ using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
-
+using System.Linq;
 
 
 namespace LeerData
 {
     class Program
     {
-                static void Main(string[] args)
+        static void Main(string[] args)
         {
             var db = new AppVentaLibrosContext();
             
-                var link = new LibroAutor{
-                    
-                };
-                var nuevoAutor = new Autor{
-                    Nombre = "Alan",
-                    Apellidos = "Ursi",
-                    Grado = "Hijo",  
-                };
+                var autor = db.Autor?.Single(x => x.AutorId == 8);
 
-
-                db.Add(nuevoAutor);
-                var estadoTransaccion = db.SaveChanges();
-
-                Console.WriteLine("Cantidad de transacciones ===> " + estadoTransaccion);
-
+                if(autor != null)
+                {
+                    db.Remove(autor); 
+                    var estadoTransaccion = db.SaveChanges();
+                    Console.WriteLine("Cantidad de registros eliminados ----> " + estadoTransaccion);
+                }
         }
-
         }
     }
